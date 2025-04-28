@@ -80,6 +80,8 @@
       width: 80%; max-width: 900px; 
       color: #fff; text-align: center; 
       box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+      overflow-y: auto;
+      max-height: 80vh;
     }
     .modal img { 
       width: 100%; height: 400px; object-fit: cover; 
@@ -88,12 +90,19 @@
     .modal h2 { font-size: 2.5rem; margin-bottom: 15px; color: #00ffcc; }
     .modal p { font-size: 1rem; margin: 10px 0; }
     .modal .close-btn { 
-      padding: 12px 24px; background: #00ffcc; border: none; 
-      color: #000; font-weight: bold; border-radius: 30px; 
-      cursor: pointer; margin-top: 20px; transition: all 0.3s; 
+      position: absolute; top: 20px; right: 20px;
+      padding: 12px 20px; background: #ff4d4d; border: none; 
+      color: #fff; font-weight: bold; font-size: 1.2rem; border-radius: 50%; 
+      cursor: pointer; transition: background 0.3s; 
     }
-    .modal .close-btn:hover { background: #00cc99; }
+    .modal .close-btn:hover { background: #ff1a1a; }
 
+    .modal .download-btn {
+      margin-top: 20px;
+      background: #ff4d4d;
+      border-radius: 25px;
+    }
+    .modal .download-btn:hover { background: #ff1a1a; }
   </style>
 </head>
 <body>
@@ -154,12 +163,13 @@
 <!-- Modal Popup for Game Details -->
 <div id="gameModal" class="modal">
   <div class="modal-content">
-    <span class="close-btn" onclick="closeModal()">Close</span>
+    <button class="close-btn" onclick="closeModal()">X</button>
     <h2 id="gameTitle"></h2>
     <img id="gameImage" src="" alt="Game Image">
     <p id="gameDescription"></p>
     <h3>System Requirements:</h3>
     <ul id="gameRequirements"></ul>
+    <a id="downloadLink" href="#" class="download-btn" target="_blank">Download Game</a>
   </div>
 </div>
 
@@ -172,59 +182,58 @@
   const gameImage = document.getElementById('gameImage');
   const gameDescription = document.getElementById('gameDescription');
   const gameRequirements = document.getElementById('gameRequirements');
+  const downloadLink = document.getElementById('downloadLink');
 
   searchInput.addEventListener('input', (e) => {
     const searchTerm = e.target.value.toLowerCase();
     games.forEach(card => {
       const title = card.querySelector('h2').innerText.toLowerCase();
-      if (title.includes(searchTerm)) {
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
+      card.style.display = title.includes(searchTerm) ? 'block' : 'none';
     });
   });
 
-  // Show modal with game details
   function showModal(game) {
     const gamesInfo = {
       farCry1: {
         title: 'Far Cry 1',
-        description: 'A first-person shooter set on a tropical island, filled with action and mystery.',
+        description: 'An action-packed first-person shooter.',
         image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/13520/header.jpg',
-        requirements: ['OS: Windows 98/2000/XP', 'Processor: Pentium 4 1.4 GHz', 'Memory: 512 MB RAM', 'Graphics: DirectX 9.0c compatible graphics card']
+        requirements: ['OS: Windows 7', 'Processor: 2.4 GHz', 'Memory: 1 GB RAM', 'Graphics: 256 MB Video Card'],
+        downloadUrl: 'https://download191.uploadhaven.com/1/application/zip/ueGQI5QhHt4dqEt9Yafdh5BbPQ1LOPXVsIE0jsBz.zip?key=0h0cp0CbYRoZYdHztLhJ2g&expire=1746028935&filename=FarCry.zip'
       },
       gta3: {
         title: 'GTA 3',
-        description: 'The third installment of the Grand Theft Auto series, set in a fictional city inspired by New York.',
+        description: 'A classic open-world action-adventure game.',
         image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/12100/header.jpg',
-        requirements: ['OS: Windows XP', 'Processor: 1.0 GHz', 'Memory: 256 MB RAM', 'Graphics: 32 MB Video Card']
+        requirements: ['OS: Windows XP', 'Processor: 1.0 GHz', 'Memory: 512 MB RAM', 'Graphics: 32 MB Video Card'],
+        downloadUrl: 'https://example.com/gta3download'
       },
       nfs: {
-        title: 'Need for Speed Most Wanted',
-        description: 'A popular racing game featuring intense street racing and police chases.',
+        title: 'Need for Speed',
+        description: 'An exciting racing game with speed and strategy.',
         image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1262560/header.jpg',
-        requirements: ['OS: Windows XP', 'Processor: 1.5 GHz', 'Memory: 512 MB RAM', 'Graphics: 64 MB Video Card']
+        requirements: ['OS: Windows 10', 'Processor: 2.0 GHz', 'Memory: 2 GB RAM', 'Graphics: 512 MB Video Card'],
+        downloadUrl: 'https://example.com/nfsdownload'
       },
       assassin: {
         title: 'Assassin\'s Creed',
         description: 'An action-adventure game set in the historical world of assassins and Templars.',
         image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/15100/header.jpg',
-        requirements: ['OS: Windows XP', 'Processor: 2.6 GHz', 'Memory: 1 GB RAM', 'Graphics: 128 MB Video Card']
+        requirements: ['OS: Windows XP', 'Processor: 2.6 GHz', 'Memory: 1 GB RAM', 'Graphics: 128 MB Video Card'],
+        downloadUrl: 'https://example.com/assassindownload'
       }
     };
 
     const gameInfo = gamesInfo[game];
-
     gameTitle.innerText = gameInfo.title;
     gameImage.src = gameInfo.image;
     gameDescription.innerText = gameInfo.description;
     gameRequirements.innerHTML = gameInfo.requirements.map(req => `<li>${req}</li>`).join('');
+    downloadLink.href = gameInfo.downloadUrl;
 
     modal.style.display = 'flex';
   }
 
-  // Close modal
   function closeModal() {
     modal.style.display = 'none';
   }
