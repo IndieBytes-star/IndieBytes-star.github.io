@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - GameVault</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .login-container {
+      background: #0a0a0a;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px cyan;
+      width: 300px;
+      text-align: center;
+    }
+
+    .login-container h2 {
+      color: cyan;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px cyan;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      background: transparent;
+      border: 2px solid cyan;
+      border-radius: 5px;
+      color: cyan;
+      font-size: 16px;
+    }
+
+    .login-container input::placeholder {
+      color: cyan;
+      opacity: 0.6;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      background: cyan;
+      color: black;
+      border: none;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .login-container button:hover {
+      background: black;
+      color: cyan;
+      border: 2px solid cyan;
+      box-shadow: 0 0 15px cyan;
+    }
+
+    .login-container p {
+      margin-top: 15px;
+      color: cyan;
+      font-size: 14px;
+    }
+
+    .login-container p a {
+      color: cyan;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+    
+      const email = this.querySelector('input[type="email"]').value;
+      const password = this.querySelector('input[type="password"]').value;
+    
+      fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ email, password })
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert(data.message);
+        if (data.success) {
+          window.location.href = "/index.html";
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Something went wrong.');
+      });
+    });
+    </script>
+    
+<body>
+
+<div class="login-container">
+  <h2>Login</h2>
+  <form id="loginForm">
+    <input type="email" placeholder="Email" required>
+    <input type="password" placeholder="Password" required>
+    <button type="submit">Log In</button>
+  </form>
+  <p>Don't have an account? <a href="/signup.html">Sign Up</a></p>
+</div>
+
+</body>
+</html>

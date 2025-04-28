@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Site</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000, #004d4d); /* Gradient background */
+            color: #0ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background: rgba(17, 17, 17, 0.9); /* Semi-transparent dark background */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 255, 255, 0.3); /* Enhanced shadow */
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        h1 {
+            color: #0ff;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        p {
+            margin: 10px 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        a {
+            color: #0ff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #0cc;
+        }
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #0ff;
+            color: #000;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: #0cc;
+            transform: scale(1.05);
+        }
+        #thankYouMessage {
+            color: #0f0;
+            font-weight: bold;
+            display: none;
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hello Guys!</h1>
+        <p>My name is Aman, and thanks for visiting my site. Here you can download any game you want. If you don't find the game you want, you can tell us at <a href="mailto:amanchauhan.real1@gmail.com">amanchauhan.real1@gmail.com</a>. That game will be added in 2 days!</p>
+        <p>And if you are here, go and subscribe to my channel: <a href="https://www.youtube.com/@indiebytes-w1z" target="_blank">https://www.youtube.com/@indiebytes-w1z</a></p>
+        <button onclick="showThankYouMessage()">Click Me!</button>
+        <p id="thankYouMessage">Thank you for visiting!</p>
+    </div>
+
+    <script>
+        function showThankYouMessage() {
+            const message = document.getElementById('thankYouMessage');
+            message.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

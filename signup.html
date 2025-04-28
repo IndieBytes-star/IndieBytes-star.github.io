@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up - GameVault</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .signup-container {
+      background: #0a0a0a;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px cyan;
+      width: 300px;
+      text-align: center;
+    }
+
+    .signup-container h2 {
+      color: cyan;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px cyan;
+    }
+
+    .signup-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      background: transparent;
+      border: 2px solid cyan;
+      border-radius: 5px;
+      color: cyan;
+      font-size: 16px;
+    }
+
+    .signup-container input::placeholder {
+      color: cyan;
+      opacity: 0.6;
+    }
+
+    .signup-container button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      background: cyan;
+      color: black;
+      border: none;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .signup-container button:hover {
+      background: black;
+      color: cyan;
+      border: 2px solid cyan;
+      box-shadow: 0 0 15px cyan;
+    }
+
+    .signup-container p {
+      margin-top: 15px;
+      color: cyan;
+      font-size: 14px;
+    }
+
+    .signup-container p a {
+      color: cyan;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<script>
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // stop form from submitting normally
+    
+      const email = this.querySelector('input[type="email"]').value;
+      const password = this.querySelectorAll('input[type="password"]')[0].value;
+      const confirmPassword = this.querySelectorAll('input[type="password"]')[1].value;
+    
+      if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+      }
+    
+      if (password.length < 6) {
+        alert('Password must be at least 6 characters!');
+        return;
+      }
+
+      // Client-side email validation
+      const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+      if (!emailPattern.test(email)) {
+        alert('Please enter a valid email!');
+        return;
+      }
+    
+      // If everything is fine, you can send data to backend
+      fetch('http://localhost:3000/signup', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ email, password })
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert(data.message);
+        if (data.success) {
+          window.location.href = "/login.html";
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Something went wrong.');
+      });
+    });
+</script>
+<body>
+
+<div class="signup-container">
+  <h2>Create Account</h2>
+  <form id="signupForm">
+    <input type="email" placeholder="Email" required>
+    <input type="password" placeholder="Password" required>
+    <input type="password" placeholder="Confirm Password" required>
+    <button type="submit">Sign Up</button>
+  </form>
+  <p>Already have an account? <a href="/login.html">Login</a></p>
+</div>
+
+</body>
+</html>
