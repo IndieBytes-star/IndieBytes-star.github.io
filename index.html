@@ -1,27 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IndieBytes Star</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0f0f0f;
+      color: #f1f1f1;
+      line-height: 1.6;
+    }
+    header {
+      background: #1e1e1e;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #ff6a00;
+    }
+    header h1 {
+      color: #ff6a00;
+      font-size: 2.5rem;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #2a2a2a;
+      padding: 10px 0;
+    }
+    nav a {
+      color: #f1f1f1;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #ff6a00;
+    }
+    section {
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #ff6a00;
+      margin-bottom: 10px;
+    }
+    ul {
+      list-style: none;
+    }
+    li {
+      background: #1e1e1e;
+      margin: 10px 0;
+      padding: 15px;
+      border-left: 5px solid #ff6a00;
+    }
+    li a {
+      color: #f1f1f1;
+      text-decoration: none;
+    }
+    li a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      background: #1a1a1a;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      border-top: 2px solid #ff6a00;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to IndieBytes Star!</h1>
-  <p>This is my personal game dev website.</p>
+  <header>
+    <h1>IndieBytes Star</h1>
+    <p>Your hub for game dev and downloads</p>
+  </header>
 
-  <h2>🎮 My Games</h2>
-  <ul>
-    <li><a href="#">Game 1 - Play Now</a></li>
-    <li><a href="#">Game 2 - Download</a></li>
-  </ul>
+  <nav>
+    <a href="#mygames">My Games</a>
+    <a href="#popular">Popular Games</a>
+    <a href="#about">About</a>
+  </nav>
 
-  <h2>🔥 Popular Games</h2>
-  <ul>
-    <li><a href="#">Free Fortnite Guide</a></li>
-    <li><a href="#">Minecraft Trial Link</a></li>
-  </ul>
+  <section id="mygames">
+    <h2>🎮 My Games</h2>
+    <ul>
+      <li><a href="#">Pixel Runner - Play Online</a></li>
+      <li><a href="#">Galaxy Blaster - Download (Windows)</a></li>
+      <li><a href="#">Zombie Rush - Coming Soon</a></li>
+    </ul>
+  </section>
+
+  <section id="popular">
+    <h2>🔥 Popular & Free Games</h2>
+    <ul>
+      <li><a href="https://www.fortnite.com" target="_blank">Fortnite - Free to Play</a></li>
+      <li><a href="https://classic.minecraft.net" target="_blank">Minecraft Classic - Play in Browser</a></li>
+      <li><a href="https://store.steampowered.com/app/570/Dota_2/" target="_blank">Dota 2 - Free on Steam</a></li>
+    </ul>
+  </section>
+
+  <section id="about">
+    <h2>👤 About Me</h2>
+    <p>Hi! I'm IndieBytes-Star, a passionate indie game developer. This site is where I share my personal game projects and offer useful links to awesome free games. Stay tuned for more updates!</p>
+  </section>
 
   <footer>
-    <p>© 2025 IndieBytes Star</p>
+    <p>&copy; 2025 IndieBytes Star. All rights reserved.</p>
   </footer>
 </body>
 </html>
