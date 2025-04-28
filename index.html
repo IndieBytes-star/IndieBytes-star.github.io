@@ -26,6 +26,14 @@
     .game-info h2 { font-size: 1.5rem; margin-bottom: 10px; }
     .download-btn { display: inline-block; margin-top: 10px; padding: 10px 20px; background: #00ffcc; color: #000; text-decoration: none; border-radius: 8px; font-weight: bold; transition: background 0.3s, transform 0.2s; }
     .download-btn:hover { background: #00cc99; transform: scale(1.05); }
+    /* Modal Styles */
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); align-items: center; justify-content: center; z-index: 9999; }
+    .modal-content { background: #222; padding: 30px; border-radius: 10px; width: 80%; max-width: 800px; color: #fff; text-align: center; }
+    .modal img { width: 100%; margin: 10px 0; }
+    .modal h2 { font-size: 2rem; margin-bottom: 10px; }
+    .modal p { font-size: 1rem; margin: 10px 0; }
+    .modal .close-btn { padding: 10px 20px; background: #00ffcc; border: none; color: #000; font-weight: bold; border-radius: 8px; cursor: pointer; transition: background 0.3s; }
+    .modal .close-btn:hover { background: #00cc99; }
   </style>
 </head>
 <body>
@@ -51,7 +59,7 @@
       <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/13520/header.jpg" alt="Far Cry 1">
       <div class="game-info">
         <h2>Far Cry 1</h2>
-        <a href="#" class="download-btn">Download</a>
+        <a href="#" class="download-btn" onclick="showModal('farCry1')">Download</a>
       </div>
     </div>
 
@@ -59,7 +67,7 @@
       <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/12100/header.jpg" alt="GTA 3">
       <div class="game-info">
         <h2>GTA 3</h2>
-        <a href="#" class="download-btn">Download</a>
+        <a href="#" class="download-btn" onclick="showModal('gta3')">Download</a>
       </div>
     </div>
 
@@ -67,7 +75,7 @@
       <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1262560/header.jpg" alt="Need for Speed Most Wanted">
       <div class="game-info">
         <h2>Need for Speed</h2>
-        <a href="#" class="download-btn">Download</a>
+        <a href="#" class="download-btn" onclick="showModal('nfs')">Download</a>
       </div>
     </div>
 
@@ -75,15 +83,32 @@
       <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/15100/header.jpg" alt="Assassin's Creed">
       <div class="game-info">
         <h2>Assassin's Creed</h2>
-        <a href="#" class="download-btn">Download</a>
+        <a href="#" class="download-btn" onclick="showModal('assassin')">Download</a>
       </div>
     </div>
   </main>
+
+  <!-- Modal Popup for Game Details -->
+  <div id="gameModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">Close</span>
+      <h2 id="gameTitle"></h2>
+      <img id="gameImage" src="" alt="Game Image">
+      <p id="gameDescription"></p>
+      <h3>System Requirements:</h3>
+      <ul id="gameRequirements"></ul>
+    </div>
+  </div>
 
   <script>
     const searchInput = document.getElementById('searchInput');
     const gamesGrid = document.getElementById('gamesGrid');
     const games = Array.from(gamesGrid.children);
+    const modal = document.getElementById('gameModal');
+    const gameTitle = document.getElementById('gameTitle');
+    const gameImage = document.getElementById('gameImage');
+    const gameDescription = document.getElementById('gameDescription');
+    const gameRequirements = document.getElementById('gameRequirements');
 
     searchInput.addEventListener('input', (e) => {
       const searchTerm = e.target.value.toLowerCase();
@@ -96,6 +121,60 @@
         }
       });
     });
+
+    // Show modal with game details
+    function showModal(game) {
+      const gamesInfo = {
+        farCry1: {
+          title: 'Far Cry 1',
+          description: 'A first-person shooter set on a tropical island, filled with action and mystery.',
+          image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/13520/header.jpg',
+          requirements: ['OS: Windows 98/2000/XP', 'Processor: Pentium 4 1.4 GHz', 'Memory: 512 MB RAM', 'Graphics: DirectX 9.0c compatible graphics card']
+        },
+        gta3: {
+          title: 'GTA 3',
+          description: 'The third installment of the Grand Theft Auto series, set in a fictional city inspired by New York.',
+          image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/12100/header.jpg',
+          requirements: ['OS: Windows XP', 'Processor: 1.0 GHz', 'Memory: 256 MB RAM', 'Graphics: 32 MB Video Card']
+        },
+        nfs: {
+          title: 'Need for Speed Most Wanted',
+          description: 'A popular racing game featuring intense street racing and police chases.',
+          image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1262560/header.jpg',
+          requirements: ['OS: Windows XP', 'Processor: 1.5 GHz', 'Memory: 512 MB RAM', 'Graphics: 64 MB Video Card']
+        },
+        assassin: {
+          title: 'Assassin\'s Creed',
+          description: 'A third-person action-adventure game set in the historical settings of the Crusades.',
+          image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/15100/header.jpg',
+          requirements: ['OS: Windows XP', 'Processor: 2.0 GHz', 'Memory: 1 GB RAM', 'Graphics: 256 MB Video Card']
+        }
+      };
+
+      // Get data for the selected game
+      const gameData = gamesInfo[game];
+
+      // Update modal content
+      gameTitle.innerText = gameData.title;
+      gameImage.src = gameData.image;
+      gameDescription.innerText = gameData.description;
+
+      // Clear and add system requirements
+      gameRequirements.innerHTML = '';
+      gameData.requirements.forEach(req => {
+        const li = document.createElement('li');
+        li.innerText = req;
+        gameRequirements.appendChild(li);
+      });
+
+      // Show modal
+      modal.style.display = 'flex';
+    }
+
+    // Close modal
+    function closeModal() {
+      modal.style.display = 'none';
+    }
 
     window.addEventListener('load', () => {
       const loader = document.getElementById('loader');
