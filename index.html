@@ -20,6 +20,28 @@
       padding: 20px;
     }
 
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0d0d0d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #00ffcc;
+      z-index: 9999;
+      flex-direction: column;
+    }
+
+    #loader span {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #888;
+    }
+
     header {
       display: flex;
       justify-content: space-between;
@@ -116,7 +138,9 @@
 </head>
 <body>
 
-  <header>
+<div id="loader">Loading GameVault<span>please wait...</span></div>
+
+  <header style="display:none;">
     <h1>GameVault</h1>
     <nav>
       <a href="#">Home</a>
@@ -126,11 +150,11 @@
     </nav>
   </header>
 
-  <div class="search-bar">
+  <div class="search-bar" style="display:none;">
     <input type="text" id="searchInput" placeholder="Search games...">
   </div>
 
-  <main class="games-grid" id="gamesGrid">
+  <main class="games-grid" id="gamesGrid" style="display:none;">
     <div class="game-card">
       <img src="https://upload.wikimedia.org/wikipedia/en/7/76/Far_Cry_1_box_art.jpg" alt="Far Cry 1">
       <div class="game-info">
@@ -179,6 +203,14 @@
           card.style.display = 'none';
         }
       });
+    });
+
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      loader.style.display = 'none';
+      document.querySelector('header').style.display = 'flex';
+      document.querySelector('.search-bar').style.display = 'block';
+      document.getElementById('gamesGrid').style.display = 'grid';
     });
   </script>
 
