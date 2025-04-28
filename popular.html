@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Popular Games</title>
+    <title>Popular PC Games</title>
     <style>
         body {
             background: linear-gradient(to bottom, #141e30, #243b55);
@@ -109,11 +109,94 @@
     </style>
 </head>
 <body>
-    <h1>Popular Games</h1>
+    <h1>Popular PC Games</h1>
     <ul>
-        <li>Game 1</li>
-        <li>Game 2</li>
-        <li>Game 3</li>
+        <li onclick="openModal('Fortnite')">Fortnite</li>
+        <li onclick="openModal('Minecraft')">Minecraft</li>
+        <li onclick="openModal('Call of Duty: Warzone')">Call of Duty: Warzone</li>
+        <li onclick="openModal('League of Legends')">League of Legends</li>
+        <li onclick="openModal('Among Us')">Among Us</li>
+        <li onclick="openModal('Valorant')">Valorant</li>
+        <li onclick="openModal('PUBG')">PUBG</li>
+        <li onclick="openModal('Apex Legends')">Apex Legends</li>
+        <li onclick="openModal('Overwatch')">Overwatch</li>
+        <li onclick="openModal('GTA V')">GTA V</li>
+        <li onclick="openModal('Red Dead Redemption 2')">Red Dead Redemption 2</li>
+        <li onclick="openModal('Cyberpunk 2077')">Cyberpunk 2077</li>
+        <li onclick="openModal('Rocket League')">Rocket League</li>
+        <li onclick="openModal('Fall Guys')">Fall Guys</li>
+        <li onclick="openModal('FIFA 22')">FIFA 22</li>
+        <li onclick="openModal('The Witcher 3')">The Witcher 3</li>
+        <li onclick="openModal('Horizon Zero Dawn')">Horizon Zero Dawn</li>
+        <li onclick="openModal('The Elder Scrolls V: Skyrim')">The Elder Scrolls V: Skyrim</li>
+        <li onclick="openModal('Assassin’s Creed Valhalla')">Assassin’s Creed Valhalla</li>
+        <li onclick="openModal('Minecraft Dungeons')">Minecraft Dungeons</li>
+        <li onclick="openModal('Hitman 3')">Hitman 3</li>
+        <li onclick="openModal('Battlefield 2042')">Battlefield 2042</li>
+        <li onclick="openModal('Watch Dogs: Legion')">Watch Dogs: Legion</li>
+        <li onclick="openModal('Destiny 2')">Destiny 2</li>
+        <li onclick="openModal('Far Cry 5')">Far Cry 5</li>
+        <li onclick="openModal('Fallout 4')">Fallout 4</li>
+        <li onclick="openModal('The Sims 4')">The Sims 4</li>
+        <li onclick="openModal('Counter-Strike: Global Offensive')">Counter-Strike: Global Offensive</li>
+        <li onclick="openModal('World of Warcraft')">World of Warcraft</li>
+        <li onclick="openModal('Tom Clancy’s Rainbow Six Siege')">Tom Clancy’s Rainbow Six Siege</li>
+        <li onclick="openModal('Sea of Thieves')">Sea of Thieves</li>
+        <li onclick="openModal('Genshin Impact')">Genshin Impact</li>
+        <li onclick="openModal('Dota 2')">Dota 2</li>
+        <li onclick="openModal('Stardew Valley')">Stardew Valley</li>
+        <li onclick="openModal('PUBG Mobile')">PUBG Mobile</li>
+        <li onclick="openModal('Rust')">Rust</li>
+        <li onclick="openModal('Dead by Daylight')">Dead by Daylight</li>
+        <li onclick="openModal('Escape from Tarkov')">Escape from Tarkov</li>
+        <li onclick="openModal('Mordhau')">Mordhau</li>
+        <li onclick="openModal('ARK: Survival Evolved')">ARK: Survival Evolved</li>
+        <li onclick="openModal('Valorant')">Valorant</li>
+        <li onclick="openModal('Hunt: Showdown')">Hunt: Showdown</li>
+        <li onclick="openModal('Paladins')">Paladins</li>
+        <li onclick="openModal('World War 3')">World War 3</li>
+        <li onclick="openModal('Call of Duty: Black Ops Cold War')">Call of Duty: Black Ops Cold War</li>
+        <li onclick="openModal('Overcooked 2')">Overcooked 2</li>
+        <li onclick="openModal('Minecraft Classic')">Minecraft Classic</li>
+        <li onclick="openModal('The Forest')">The Forest</li>
+        <li onclick="openModal('Call of Duty: Modern Warfare')">Call of Duty: Modern Warfare</li>
+        <li onclick="openModal('No Man’s Sky')">No Man’s Sky</li>
+        <li onclick="openModal('Rocket League')">Rocket League</li>
+        <li onclick="openModal('Tom Clancy’s The Division 2')">Tom Clancy’s The Division 2</li>
+        <li onclick="openModal('Cyber Hunter')">Cyber Hunter</li>
     </ul>
+
+    <!-- Modal -->
+    <div id="gameModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Game Details</h2>
+            <p id="gameDetails"></p>
+        </div>
+    </div>
+
+    <script>
+        // Open the modal and show game details
+        function openModal(gameName) {
+            const modal = document.getElementById('gameModal');
+            const gameDetails = document.getElementById('gameDetails');
+            gameDetails.textContent = `You can search for the game "${gameName}" and download it from your favorite platform.`;
+            modal.style.display = 'block';
+        }
+
+        // Close the modal
+        function closeModal() {
+            const modal = document.getElementById('gameModal');
+            modal.style.display = 'none';
+        }
+
+        // Close the modal if user clicks outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('gameModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
