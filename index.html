@@ -15,11 +15,21 @@
     }
 
     body {
-      background: linear-gradient(135deg, #3b3b3b, #1a1a1a);
+      background: #101010;
       color: #fff;
-      padding: 30px;
       overflow-x: hidden;
       height: 100%;
+      padding: 20px;
+    }
+
+    /* Global Styles */
+    h1, h2 {
+      text-align: center;
+      color: #00ffcc;
+    }
+
+    a {
+      text-decoration: none;
     }
 
     /* Loader */
@@ -52,33 +62,28 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* Header */
+    /* Header Section */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 40px;
-      position: relative;
-      z-index: 1;
+      margin-bottom: 30px;
     }
 
     header h1 {
       font-size: 3rem;
-      color: #00ffcc;
       font-weight: 700;
+      color: #00ffcc;
       text-transform: uppercase;
-      letter-spacing: 2px;
     }
 
     nav {
       display: flex;
-      flex-wrap: wrap;
     }
 
     nav a {
       color: #fff;
       margin-left: 20px;
-      text-decoration: none;
       font-size: 1.1rem;
       transition: color 0.3s ease;
     }
@@ -87,58 +92,32 @@
       color: #00ffcc;
     }
 
-    /* Search Bar */
-    .search-bar {
-      margin-bottom: 30px;
-      text-align: center;
-    }
-
-    .search-bar input {
-      padding: 12px;
-      width: 350px;
-      max-width: 90%;
-      border-radius: 8px;
-      outline: none;
-      border: 1px solid #333;
-      background-color: #2c2c2c;
-      color: #fff;
-      font-size: 1.1rem;
-      transition: background-color 0.3s ease;
-    }
-
-    .search-bar input:focus {
-      background-color: #444;
-    }
-
-    /* Game Cards */
+    /* Game Cards Layout */
     .games-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
       margin-top: 40px;
     }
 
     .game-card {
-      background: #292929;
-      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
       overflow: hidden;
       position: relative;
-      box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
-      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+      transition: all 0.3s ease;
       cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
     }
 
     .game-card:hover {
       transform: scale(1.05);
-      box-shadow: 0 10px 30px rgba(0, 255, 204, 0.5);
+      box-shadow: 0 0 30px rgba(0, 255, 204, 0.7);
     }
 
     .game-card img {
       width: 100%;
-      height: 220px;
+      height: 200px;
       object-fit: cover;
       transition: opacity 0.3s ease;
     }
@@ -155,30 +134,29 @@
       bottom: 0;
       left: 0;
       width: 100%;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
       transition: background 0.3s ease;
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
     }
 
     .game-info h2 {
-      font-size: 1.6rem;
-      margin-bottom: 10px;
+      font-size: 1.8rem;
       text-transform: uppercase;
       letter-spacing: 1px;
+      margin-bottom: 10px;
+      color: #00ffcc;
     }
 
     .download-btn {
-      display: inline-block;
-      margin-top: 10px;
       padding: 12px 25px;
       background: #00ffcc;
       color: #000;
-      text-decoration: none;
       border-radius: 8px;
       font-weight: bold;
-      transition: background 0.3s, transform 0.3s;
       text-transform: uppercase;
       letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
     .download-btn:hover {
@@ -208,6 +186,7 @@
       max-width: 900px;
       text-align: center;
       width: 80%;
+      box-shadow: 0 0 30px rgba(0, 255, 204, 0.3);
     }
 
     .modal-content img {
@@ -225,7 +204,7 @@
     }
 
     .modal-content p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       margin-bottom: 15px;
       color: #aaa;
     }
@@ -278,17 +257,13 @@
   </nav>
 </header>
 
-<div class="search-bar" style="display:none;">
-  <input type="text" id="searchInput" placeholder="Search games...">
-</div>
-
 <main class="games-grid" id="gamesGrid" style="display:none;">
   <!-- Game Cards -->
   <div class="game-card" onclick="showModal('farCry1')">
     <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/13520/header.jpg" alt="Far Cry 1">
     <div class="game-info">
       <h2>Far Cry 1</h2>
-      <a href="#" class="download-btn">Download</a>
+      <button class="download-btn">Download</button>
     </div>
   </div>
 
@@ -296,11 +271,25 @@
     <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/12100/header.jpg" alt="GTA 3">
     <div class="game-info">
       <h2>GTA 3</h2>
-      <a href="#" class="download-btn">Download</a>
+      <button class="download-btn">Download</button>
     </div>
   </div>
 
-  <!-- Add more games here -->
+  <div class="game-card" onclick="showModal('needForSpeed')">
+    <img src="https://upload.wikimedia.org/wikipedia/en/7/77/Need_for_Speed_Most_Wanted_%282005%29_cover.jpg" alt="Need For Speed Most Wanted">
+    <div class="game-info">
+      <h2>Need for Speed: Most Wanted</h2>
+      <button class="download-btn">Download</button>
+    </div>
+  </div>
+
+  <div class="game-card" onclick="showModal('onlyDown')">
+    <img src="https://upload.wikimedia.org/wikipedia/en/4/4f/OnlyDown_logo.png" alt="Only Down">
+    <div class="game-info">
+      <h2>Only Down</h2>
+      <button class="download-btn">Download</button>
+    </div>
+  </div>
 </main>
 
 <!-- Modal -->
@@ -319,7 +308,6 @@
     setTimeout(() => {
       document.getElementById('loader').style.display = 'none';
       document.querySelector('header').style.display = 'block';
-      document.querySelector('.search-bar').style.display = 'block';
       document.getElementById('gamesGrid').style.display = 'grid';
     }, 2000);
   });
@@ -350,6 +338,26 @@
         <li>Iconic storylines and characters</li>
         <li>Vehicular combat and free roaming</li>
         <li>Radio stations and memorable soundtrack</li>
+      `;
+    } else if (game === 'needForSpeed') {
+      gameTitle.textContent = 'Need for Speed: Most Wanted';
+      gameImage.src = 'https://upload.wikimedia.org/wikipedia/en/7/77/Need_for_Speed_Most_Wanted_%282005%29_cover.jpg';
+      gameDescription.textContent = 'Need for Speed: Most Wanted is an action-packed street racing game.';
+      gameFeatures.innerHTML = `
+        <li>Illegal street racing with fast cars</li>
+        <li>Police chases and action-packed races</li>
+        <li>Iconic car customization</li>
+        <li>Exciting storyline with rival racers</li>
+      `;
+    } else if (game === 'onlyDown') {
+      gameTitle.textContent = 'Only Down';
+      gameImage.src = 'https://upload.wikimedia.org/wikipedia/en/4/4f/OnlyDown_logo.png';
+      gameDescription.textContent = 'Only Down is a thrilling first-person survival game.';
+      gameFeatures.innerHTML = `
+        <li>Survival gameplay with intense action</li>
+        <li>Engaging puzzle elements</li>
+        <li>Challenging and atmospheric world</li>
+        <li>Immersive graphics and physics</li>
       `;
     }
 
