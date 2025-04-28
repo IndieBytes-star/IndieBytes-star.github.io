@@ -13,7 +13,7 @@
       box-sizing: border-box;
       font-family: 'Roboto', sans-serif;
     }
-    
+
     body {
       background: #1a1a1a;
       color: #fff;
@@ -259,8 +259,7 @@
   </div>
 
   <div class="game-card" onclick="showModal('onlyDown')">
-    <!-- Updated Image Source -->
-    <img src="https://via.placeholder.com/500x200/00ffcc/ffffff?text=Only+Down" alt="Only Down">
+    <img src="https://steamunlocked.net/wp-content/uploads/2023/07/Only-Down-Free-Download.png" alt="Only Down">
     <div class="game-info">
       <h2>Only Down</h2>
       <a href="#" class="download-btn">Download</a>
@@ -286,6 +285,60 @@
   </div>
 </div>
 
+<!-- GTA 3 Modal -->
+<div id="gta3" class="modal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeModal()">X</button>
+    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/12100/header.jpg" alt="GTA 3">
+    <h2>GTA 3</h2>
+    <p>Grand Theft Auto III (GTA 3) is an action-adventure game developed by DMA Design and published by Rockstar Games.</p>
+    <h3>System Requirements</h3>
+    <ul>
+      <li>OS: Windows 98/2000</li>
+      <li>Processor: 1.0 GHz</li>
+      <li>Memory: 128 MB</li>
+      <li>Graphics: DirectX 8.1 compatible</li>
+    </ul>
+    <a href="https://download191.uploadhaven.com/1/application/zip/ueGQI5QhHt4dqEt9Yafdh5BbPQ1LOPXVsIE0jsBz.zip?key=0h0cp0CbYRoZYdHztLhJ2g&expire=1746028935&filename=GTA3.zip" class="download-btn" target="_blank">Download Game</a>
+  </div>
+</div>
+
+<!-- NFS Most Wanted Modal -->
+<div id="nfsMostWanted" class="modal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeModal()">X</button>
+    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1262560/header.jpg" alt="Need for Speed Most Wanted">
+    <h2>Need for Speed Most Wanted</h2>
+    <p>Need for Speed: Most Wanted is an action-racing video game developed by EA Black Box and published by Electronic Arts.</p>
+    <h3>System Requirements</h3>
+    <ul>
+      <li>OS: Windows XP</li>
+      <li>Processor: 2.4 GHz</li>
+      <li>Memory: 512 MB</li>
+      <li>Graphics: NVIDIA GeForce 6600 or ATI Radeon 9600</li>
+    </ul>
+    <a href="https://download191.uploadhaven.com/1/application/zip/ueGQI5QhHt4dqEt9Yafdh5BbPQ1LOPXVsIE0jsBz.zip?key=0h0cp0CbYRoZYdHztLhJ2g&expire=1746028935&filename=NFS.zip" class="download-btn" target="_blank">Download Game</a>
+  </div>
+</div>
+
+<!-- Only Down Modal -->
+<div id="onlyDown" class="modal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeModal()">X</button>
+    <img src="https://steamunlocked.net/wp-content/uploads/2023/07/Only-Down-Free-Download.png" alt="Only Down">
+    <h2>Only Down</h2>
+    <p>Only Down is an indie game developed by a small team of creators.</p>
+    <h3>System Requirements</h3>
+    <ul>
+      <li>OS: Windows 7</li>
+      <li>Processor: 2.0 GHz</li>
+      <li>Memory: 1 GB</li>
+      <li>Graphics: DirectX 9.0</li>
+    </ul>
+    <a href="https://download191.uploadhaven.com/1/application/zip/ueGQI5QhHt4dqEt9Yafdh5BbPQ1LOPXVsIE0jsBz.zip?key=0h0cp0CbYRoZYdHztLhJ2g&expire=1746028935&filename=OnlyDown.zip" class="download-btn" target="_blank">Download Game</a>
+  </div>
+</div>
+
 <script>
   const searchInput = document.getElementById('searchInput');
   const gamesGrid = document.getElementById('gamesGrid');
@@ -308,17 +361,18 @@
     loader.style.display = 'none';
     document.querySelector('header').style.display = 'flex';
     document.querySelector('.search-bar').style.display = 'block';
-    document.getElementById('gamesGrid').style.display = 'grid';
+    gamesGrid.style.display = 'grid';
   });
 
-  // Modal functionality
   function showModal(gameId) {
     document.getElementById(gameId).style.display = 'flex';
   }
 
   function closeModal() {
     const modals = document.querySelectorAll('.modal');
-    modals.forEach(modal => modal.style.display = 'none');
+    modals.forEach(modal => {
+      modal.style.display = 'none';
+    });
   }
 </script>
 
