@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GameVault - Download Games</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/732/732229.png" type="image/png">
   <style>
     * {
       margin: 0;
@@ -24,11 +25,17 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 40px;
+      flex-wrap: wrap;
     }
 
     header h1 {
       font-size: 2.5rem;
       color: #00ffcc;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
     }
 
     nav a {
@@ -40,6 +47,20 @@
 
     nav a:hover {
       color: #00ffcc;
+    }
+
+    .search-bar {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .search-bar input {
+      padding: 10px;
+      width: 300px;
+      max-width: 90%;
+      border: none;
+      border-radius: 8px;
+      outline: none;
     }
 
     .games-grid {
@@ -104,7 +125,11 @@
     </nav>
   </header>
 
-  <main class="games-grid">
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search games...">
+  </div>
+
+  <main class="games-grid" id="gamesGrid">
     <div class="game-card">
       <img src="https://via.placeholder.com/400x200?text=Far+Cry+1" alt="Far Cry 1">
       <div class="game-info">
@@ -137,6 +162,24 @@
       </div>
     </div>
   </main>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const gamesGrid = document.getElementById('gamesGrid');
+    const games = Array.from(gamesGrid.children);
+
+    searchInput.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      games.forEach(card => {
+        const title = card.querySelector('h2').innerText.toLowerCase();
+        if (title.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
