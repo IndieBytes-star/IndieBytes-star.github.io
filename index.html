@@ -236,6 +236,14 @@
 <main class="games-grid" id="gamesGrid" style="display:none;">
   <!-- Game Cards -->
 
+  <div class="game-card" onclick="showModal('One Up')">
+    <img src="https://play-lh.googleusercontent.com/k66DnwXskDyGHlJ6b7MwKemKGzSUf2-B0PHqBydMPM3V_FFN9mS_nsEKbA8Q_TkJAgQ=w240-h480-rw" alt="One Up"> 
+    <div class="game-info">
+      <h2>One up</h2>
+      <a href="#" class="download-btn">Download</a>
+    </div>
+  </div>
+
   <div class="game-card" onclick="showModal('Minecraft (Mobile)')">
     <img src="https://th.bing.com/th/id/OIP.RYtfcqIDCcWLaR0gB9QzmgHaF7?w=215&h=180&c=7&r=0&o=5&pid=1.7" alt="Minecraft"> 
     <div class="game-info">
@@ -287,11 +295,28 @@
 
 <!-- Modal Content -->
 
+<!-- One up Modal -->
+<div id="One Up" class="modal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeModal()">X</button>
+    <img src="https://play-lh.googleusercontent.com/k66DnwXskDyGHlJ6b7MwKemKGzSUf2-B0PHqBydMPM3V_FFN9mS_nsEKbA8Q_TkJAgQ=w240-h480-rw" alt= "One up">
+    <h2>One Up</h2>
+    <p>One up is a game inspired by only up pc game.</p>
+    <h3>System Requirements</h3>
+    <ul>
+      <li>OS: Android 6.0 (Marshmallow) or higher</li>
+      <li>Storage: Approximately 832.5 MB of free space</li>
+      <li>Architecture: Supports ARMv7 and ARM64 devices</li>
+    </ul>
+    <a href="https://play.google.com/store/apps/details?id=com.HitGamingStudio.OneUp&hl=en-US&pli=1" class="download-btn" target="_blank">Download Game</a>
+  </div>
+</div>
+
 <!-- Minecraft(Mobile) Modal -->
 <div id="Minecraft (Mobile)" class="modal">
   <div class="modal-content">
     <button class="close-btn" onclick="closeModal()">X</button>
-    <img src="https://th.bing.com/th/id/OIP.RYtfcqIDCcWLaR0gB9QzmgHaF7?w=215&h=180&c=7&r=0&o=5&pid=1.7" alt= "Resident evil 4">
+    <img src="https://th.bing.com/th/id/OIP.RYtfcqIDCcWLaR0gB9QzmgHaF7?w=215&h=180&c=7&r=0&o=5&pid=1.7" alt= "Minecraft (Mobile)">
     <h2>Minecraft (Mobile)</h2>
     <p>Minecraft is a survival horror game developed by Mojang.</p>
     <h3>System Requirements</h3>
@@ -435,6 +460,3 @@
 
 </body>
 </html>
-
-
-
