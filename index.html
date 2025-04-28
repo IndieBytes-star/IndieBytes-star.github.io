@@ -13,39 +13,28 @@
       box-sizing: border-box;
       font-family: 'Roboto', sans-serif;
     }
-
+    
     body {
-      background: #101010;
+      background: #1a1a1a;
       color: #fff;
-      overflow-x: hidden;
-      height: 100%;
       padding: 20px;
     }
 
-    /* Global Styles */
-    h1, h2 {
-      text-align: center;
-      color: #00ffcc;
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    /* Loader */
+    /* Loader Styling */
     #loader {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.8);
+      background: #0d0d0d;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 2rem;
       color: #00ffcc;
       z-index: 9999;
+      flex-direction: column;
     }
 
     #loader .spin {
@@ -62,101 +51,103 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* Header Section */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
 
     header h1 {
       font-size: 3rem;
-      font-weight: 700;
       color: #00ffcc;
-      text-transform: uppercase;
+      font-weight: 700;
     }
 
     nav {
       display: flex;
+      flex-wrap: wrap;
     }
 
     nav a {
       color: #fff;
       margin-left: 20px;
+      text-decoration: none;
       font-size: 1.1rem;
-      transition: color 0.3s ease;
+      transition: color 0.3s;
     }
 
     nav a:hover {
       color: #00ffcc;
     }
 
-    /* Game Cards Layout */
+    .search-bar {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .search-bar input {
+      padding: 10px;
+      width: 300px;
+      max-width: 90%;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      background: #333;
+      color: #fff;
+    }
+
     .games-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
     }
 
     .game-card {
-      background: rgba(0, 0, 0, 0.5);
+      background: #1a1a1a;
       border-radius: 15px;
       overflow: hidden;
-      position: relative;
-      box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
-      transition: all 0.3s ease;
-      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
     }
 
     .game-card:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(0, 255, 204, 0.7);
+      box-shadow: 0 10px 20px rgba(0, 255, 204, 0.5);
     }
 
     .game-card img {
       width: 100%;
       height: 200px;
       object-fit: cover;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.3s;
     }
 
     .game-card:hover img {
-      opacity: 0.8;
+      opacity: 0.85;
     }
 
     .game-info {
-      padding: 20px;
+      padding: 15px;
       text-align: center;
-      background: rgba(0, 0, 0, 0.6);
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      border-bottom-left-radius: 15px;
-      border-bottom-right-radius: 15px;
-      transition: background 0.3s ease;
     }
 
     .game-info h2 {
-      font-size: 1.8rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      font-size: 1.5rem;
       margin-bottom: 10px;
-      color: #00ffcc;
+      text-transform: uppercase;
     }
 
     .download-btn {
-      padding: 12px 25px;
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
       background: #00ffcc;
       color: #000;
+      text-decoration: none;
       border-radius: 8px;
       font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      transition: background 0.3s, transform 0.2s;
     }
 
     .download-btn:hover {
@@ -164,7 +155,7 @@
       transform: scale(1.05);
     }
 
-    /* Modal */
+    /* Modal Styling */
     .modal {
       display: none;
       position: fixed;
@@ -180,19 +171,16 @@
     }
 
     .modal-content {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 30px;
+      background: #222;
+      padding: 20px;
       border-radius: 10px;
-      max-width: 900px;
+      max-width: 800px;
       text-align: center;
-      width: 80%;
-      box-shadow: 0 0 30px rgba(0, 255, 204, 0.3);
     }
 
     .modal-content img {
       width: 100%;
-      height: 350px;
-      object-fit: cover;
+      height: auto;
       margin-bottom: 15px;
       border-radius: 10px;
     }
@@ -203,30 +191,13 @@
       color: #00ffcc;
     }
 
-    .modal-content p {
-      font-size: 1.2rem;
-      margin-bottom: 15px;
-      color: #aaa;
-    }
-
-    .modal-content ul {
-      text-align: left;
-      margin: 10px 0;
-      font-size: 1rem;
-      color: #ccc;
-    }
-
-    .modal-content ul li {
-      margin-bottom: 10px;
-    }
-
     .close-btn {
       position: absolute;
       top: 10px;
       right: 10px;
       background: #ff4c4c;
       color: white;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       border: none;
       border-radius: 50%;
       cursor: pointer;
@@ -257,13 +228,17 @@
   </nav>
 </header>
 
+<div class="search-bar" style="display:none;">
+  <input type="text" id="searchInput" placeholder="Search games...">
+</div>
+
 <main class="games-grid" id="gamesGrid" style="display:none;">
   <!-- Game Cards -->
   <div class="game-card" onclick="showModal('farCry1')">
     <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/13520/header.jpg" alt="Far Cry 1">
     <div class="game-info">
       <h2>Far Cry 1</h2>
-      <button class="download-btn">Download</button>
+      <a href="#" class="download-btn">Download</a>
     </div>
   </div>
 
@@ -271,101 +246,78 @@
     <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/12100/header.jpg" alt="GTA 3">
     <div class="game-info">
       <h2>GTA 3</h2>
-      <button class="download-btn">Download</button>
+      <a href="#" class="download-btn">Download</a>
     </div>
   </div>
 
-  <div class="game-card" onclick="showModal('needForSpeed')">
-    <img src="https://upload.wikimedia.org/wikipedia/en/7/77/Need_for_Speed_Most_Wanted_%282005%29_cover.jpg" alt="Need For Speed Most Wanted">
+  <div class="game-card" onclick="showModal('nfsMostWanted')">
+    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1262560/header.jpg" alt="Need for Speed Most Wanted">
     <div class="game-info">
-      <h2>Need for Speed: Most Wanted</h2>
-      <button class="download-btn">Download</button>
+      <h2>Need for Speed</h2>
+      <a href="#" class="download-btn">Download</a>
     </div>
   </div>
 
   <div class="game-card" onclick="showModal('onlyDown')">
-    <img src="https://upload.wikimedia.org/wikipedia/en/4/4f/OnlyDown_logo.png" alt="Only Down">
+    <img src="https://via.placeholder.com/500x200/00ffcc/ffffff?text=Only+Down" alt="Only Down">
     <div class="game-info">
       <h2>Only Down</h2>
-      <button class="download-btn">Download</button>
+      <a href="#" class="download-btn">Download</a>
     </div>
   </div>
 </main>
 
-<!-- Modal -->
-<div class="modal" id="gameModal">
+<!-- Modal Content -->
+<div id="farCry1" class="modal">
   <div class="modal-content">
     <button class="close-btn" onclick="closeModal()">X</button>
-    <img src="" id="gameImage" alt="">
-    <h2 id="gameTitle"></h2>
-    <p id="gameDescription"></p>
-    <ul id="gameFeatures"></ul>
+    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/13520/header.jpg" alt="Far Cry 1">
+    <h2>Far Cry 1</h2>
+    <p>Far Cry is a first-person shooter video game developed by Crytek and published by Ubisoft.</p>
+    <h3>System Requirements</h3>
+    <ul>
+      <li>OS: Windows XP</li>
+      <li>Processor: 2 GHz</li>
+      <li>Memory: 512 MB</li>
+      <li>Graphics: NVIDIA GeForce 6800 or ATI Radeon X800</li>
+    </ul>
+    <a href="https://download191.uploadhaven.com/1/application/zip/ueGQI5QhHt4dqEt9Yafdh5BbPQ1LOPXVsIE0jsBz.zip?key=0h0cp0CbYRoZYdHztLhJ2g&expire=1746028935&filename=FarCry.zip" class="download-btn" target="_blank">Download Game</a>
   </div>
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-      document.getElementById('loader').style.display = 'none';
-      document.querySelector('header').style.display = 'block';
-      document.getElementById('gamesGrid').style.display = 'grid';
-    }, 2000);
+  const searchInput = document.getElementById('searchInput');
+  const gamesGrid = document.getElementById('gamesGrid');
+  const games = Array.from(gamesGrid.children);
+
+  searchInput.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    games.forEach(card => {
+      const title = card.querySelector('h2').innerText.toLowerCase();
+      if (title.includes(searchTerm)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
   });
 
-  function showModal(game) {
-    const modal = document.getElementById('gameModal');
-    const gameTitle = document.getElementById('gameTitle');
-    const gameImage = document.getElementById('gameImage');
-    const gameDescription = document.getElementById('gameDescription');
-    const gameFeatures = document.getElementById('gameFeatures');
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    loader.style.display = 'none';
+    document.querySelector('header').style.display = 'flex';
+    document.querySelector('.search-bar').style.display = 'block';
+    document.getElementById('gamesGrid').style.display = 'grid';
+  });
 
-    if (game === 'farCry1') {
-      gameTitle.textContent = 'Far Cry 1';
-      gameImage.src = 'https://cdn.cloudflare.steamstatic.com/steam/apps/13520/header.jpg';
-      gameDescription.textContent = 'Far Cry 1 is a first-person shooter game developed by Crytek and published by Ubisoft.';
-      gameFeatures.innerHTML = `
-        <li>Open-world shooter gameplay</li>
-        <li>Immersive jungle environments</li>
-        <li>Multiple combat strategies</li>
-        <li>Varied enemies and environments</li>
-      `;
-    } else if (game === 'gta3') {
-      gameTitle.textContent = 'GTA 3';
-      gameImage.src = 'https://cdn.cloudflare.steamstatic.com/steam/apps/12100/header.jpg';
-      gameDescription.textContent = 'GTA 3 is an open-world action-adventure game developed by Rockstar Games.';
-      gameFeatures.innerHTML = `
-        <li>Wide-open world with endless activities</li>
-        <li>Iconic storylines and characters</li>
-        <li>Vehicular combat and free roaming</li>
-        <li>Radio stations and memorable soundtrack</li>
-      `;
-    } else if (game === 'needForSpeed') {
-      gameTitle.textContent = 'Need for Speed: Most Wanted';
-      gameImage.src = 'https://upload.wikimedia.org/wikipedia/en/7/77/Need_for_Speed_Most_Wanted_%282005%29_cover.jpg';
-      gameDescription.textContent = 'Need for Speed: Most Wanted is an action-packed street racing game.';
-      gameFeatures.innerHTML = `
-        <li>Illegal street racing with fast cars</li>
-        <li>Police chases and action-packed races</li>
-        <li>Iconic car customization</li>
-        <li>Exciting storyline with rival racers</li>
-      `;
-    } else if (game === 'onlyDown') {
-      gameTitle.textContent = 'Only Down';
-      gameImage.src = 'https://upload.wikimedia.org/wikipedia/en/4/4f/OnlyDown_logo.png';
-      gameDescription.textContent = 'Only Down is a thrilling first-person survival game.';
-      gameFeatures.innerHTML = `
-        <li>Survival gameplay with intense action</li>
-        <li>Engaging puzzle elements</li>
-        <li>Challenging and atmospheric world</li>
-        <li>Immersive graphics and physics</li>
-      `;
-    }
-
-    modal.style.display = 'flex';
+  // Modal functionality
+  function showModal(gameId) {
+    document.getElementById(gameId).style.display = 'flex';
   }
 
   function closeModal() {
-    document.getElementById('gameModal').style.display = 'none';
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(modal => modal.style.display = 'none');
   }
 </script>
 
