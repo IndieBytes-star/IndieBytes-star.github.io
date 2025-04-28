@@ -6,50 +6,114 @@
     <title>Popular Games</title>
     <style>
         body {
-            background-color: black;
-            color: cyan;
-            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #141e30, #243b55);
+            color: #00e6e6;
+            font-family: 'Poppins', Arial, sans-serif;
             text-align: center;
             margin: 0;
             padding: 0;
         }
         h1 {
             margin-top: 20px;
+            font-size: 3em;
+            text-shadow: 3px 3px 10px black;
+            color: #00ffff;
         }
         ul {
             list-style-type: none;
             padding: 0;
         }
         li {
-            margin: 10px 0;
+            margin: 15px 0;
             cursor: pointer;
-            font-size: 1.2em;
+            font-size: 1.8em;
+            padding: 10px 20px;
+            border: 2px solid #00e6e6;
+            border-radius: 25px;
+            display: inline-block;
+            transition: transform 0.3s, color 0.3s, background-color 0.3s, box-shadow 0.3s;
         }
         li:hover {
-            color: white;
+            color: #141e30;
+            background-color: #00e6e6;
+            transform: scale(1.2);
+            box-shadow: 0 0 15px #00e6e6;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding-top: 60px;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        .modal-content {
+            background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+            margin: auto;
+            padding: 20px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 400px;
+            color: #333;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            animation: zoomIn 0.5s ease-in-out;
+            position: relative;
+        }
+        .close-btn {
+            color: #555;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .close-btn:hover {
+            color: #ff0000;
+        }
+        h2 {
+            font-size: 2em;
+            color: #141e30;
+            text-shadow: 2px 2px 5px #00e6e6;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
     </style>
 </head>
 <body>
     <h1>Popular Games</h1>
-    <ul id="gameList">
-        <li>Fortnite</li>
-        <li>Minecraft</li>
-        <li>Call of Duty</li>
-        <li>League of Legends</li>
-        <li>Among Us</li>
+    <ul>
+        <li>Game 1</li>
+        <li>Game 2</li>
+        <li>Game 3</li>
     </ul>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const games = document.querySelectorAll('#gameList li');
-            games.forEach(game => {
-                game.addEventListener('click', () => {
-                    const message = `Go to home and search the game "${game.textContent}" which you wish to download.`;
-                    alert(message); // This triggers the alert
-                });
-            });
-        });
-    </script>
 </body>
 </html>
