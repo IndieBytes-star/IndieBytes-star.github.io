@@ -127,6 +127,24 @@
             transform: scale(1.05);
             transition: background-color 0.3s, color 0.3s, transform 0.3s;
         }
+        .corner-note:active {
+            transform: scale(0.95);
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            li {
+                font-size: 1.5em;
+            }
+            .modal-content {
+                width: 90%;
+            }
+            .corner-note {
+                font-size: 1em;
+                padding: 8px 15px;
+            }
+        }
 
     </style>
 </head>
